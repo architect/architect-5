@@ -2,8 +2,16 @@
 
 ---
 Also see:
-- [Architect Functions changelog](https://github.com/architect/arc-functions/blob/master/changelog.md)
-- [Architect Data changelog](https://github.com/architect/arc-data/blob/master/changelog.md)
+- [Architect Functions changelog](https://github.com/architect/functions/blob/master/changelog.md)
+---
+
+## [5.9.25] 2019-08-11
+
+### Fixed
+
+- Fixes issue where Lambdas may not deploy when `@static` is defined but `fingerprint` is disabled
+- Improves clarity of error state when a deploy is attempted to Lambda that doesn't exist
+
 ---
 
 ## [5.9.24] 2019-08-05
