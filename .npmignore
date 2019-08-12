@@ -5,6 +5,7 @@
 .gitattributes
 .github
 .travis.yml
+appveyor.yml
 changelog.md
 contributing.md
 coverage/
