@@ -1,6 +1,7 @@
 let test = require('tape')
 let sinon = require('sinon')
 let inquirer = require('inquirer')
+let {pathToUnix} = require('@architect/utils')
 
 let help = require('../../../src/help')
 let logstub = sinon.stub(help, 'log')
@@ -28,7 +29,7 @@ test('known command reads appropriate doc file', async t=> {
   t.plan(1)
   let readspy = sinon.spy(help, 'read')
   await help.main(['help', 'deploy'])
-  t.ok(readspy.firstCall.args[0].endsWith('doc/deploy.md'), 'read called with appropriate file path')
+  t.ok(pathToUnix(readspy.firstCall.args[0]).endsWith('doc/deploy.md'), 'read called with appropriate file path')
   readspy.restore()
   t.end()
 })
