@@ -78,7 +78,11 @@ module.exports = function factory(params, callback) {
     /**
      * Upload files to S3
      */
-    function uploadFiles(manifest={}, callback) {
+    function uploadFiles(manifest, callback) {
+      if (typeof manifest === 'function') {
+        callback = manifest
+        manifest = {}
+      }
       staticManifest = manifest
       if (fingerprint) {
         // Ensure static.json is uploaded

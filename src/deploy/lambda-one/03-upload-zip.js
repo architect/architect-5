@@ -1,3 +1,4 @@
+let chalk = require('chalk')
 let series = require('run-waterfall')
 let aws = require('aws-sdk')
 let zip = require('./_zip-impl')
@@ -28,7 +29,7 @@ module.exports = function uploadZip(params, callback) {
       function _updatedFun(err) {
         if (err && err.code === 'ResourceNotFoundException') {
           retry(params.pathToCode)
-          let stats = {name: params.pathToCode, size: `Creating`}
+          let stats = {name: params.pathToCode, size: chalk.red(`Lambda not found!`)}
           callback(null, stats)
         }
         else if (err) {

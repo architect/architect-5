@@ -1,10 +1,10 @@
-[<img src="https://s3-us-west-2.amazonaws.com/arc.codes/architect-logo-500b@2x.png" width=500>](https://www.npmjs.com/package/@architect/architect)
+[<img src="https://s3-us-west-2.amazonaws.com/arc.codes/architect-logo-500b@2x.png" width=500>](https://www.npmjs.com/package/@architect/architect@5)
 
-## [`@architect/architect`](https://www.npmjs.com/package/@architect/architect)
+## [`@architect/architect@5`](https://www.npmjs.com/package/@architect/architect)
 
-> Create, deploy, and maintain next-generation AWS cloud function-based serverless infrastructure with full local, offline workflows, and more.
+> [Maintenance / LTS] Create, deploy, and maintain next-generation AWS cloud function-based serverless infrastructure with full local, offline workflows, and more.
 
-[![Build Status](https://travis-ci.com/architect/architect.svg?branch=master)](https://travis-ci.com/architect/architect)
+[![Travis Build Status](https://travis-ci.com/architect/architect-5.svg?branch=master)](https://travis-ci.com/architect/architect-5) [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/7q30bexnt5pdrlby/branch/master?svg=true)](https://ci.appveyor.com/project/ArchitectCI/architect-5/branch/master) <!--TODO: [![codecov](https://codecov.io/gh/architect/architect-5/branch/master/graph/badge.svg)](https://codecov.io/gh/architect/architect-5)-->
 
 
 ## Quickstart
