@@ -243,7 +243,11 @@ module.exports = function inventory(arc, raw, callback) {
   }
 
   if (arc.static && arc.static.length) {
-    report.s3buckets = [arc.static[0][0], arc.static[0][1]]
+    report.s3buckets = arc.static.map(entry=> {
+      if (entry[0] === 'staging' || entry[0] === 'production') {
+        return entry[1]
+      }
+    })
   }
 
   // pass off the data
