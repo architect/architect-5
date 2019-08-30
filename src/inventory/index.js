@@ -242,8 +242,8 @@ module.exports = function inventory(arc, raw, callback) {
     })
   }
 
-  if (arc.static) {
-    report.s3buckets = [arc.static[0][1], arc.static[1][1]]
+  if (arc.static && arc.static.length) {
+    report.s3buckets = [arc.static[0][0], arc.static[0][1]]
   }
 
   // pass off the data
