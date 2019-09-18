@@ -71,7 +71,7 @@
   "license": "Apache-2.0",
   "homepage": "https://arc.codes",
   "dependencies": {
-    "@architect/data": "^2.1.0",
+    "@architect/data": "^3.0.5",
     "@architect/parser": "^1.1.7",
     "@architect/sandbox": "^1.2.11",
     "@architect/utils": "^1.2.4",
