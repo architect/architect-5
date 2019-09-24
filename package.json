@@ -102,7 +102,7 @@
     "uuid": "^3.3.2",
     "ws": "^7.0.1",
     "zip-dir": "^1.0.2",
-    "zipit": "^1.0.2"
+    "zipit": "^2.0.0"
   },
   "devDependencies": {
     "cross-env": "^6.0.0",
