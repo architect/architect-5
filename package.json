@@ -81,7 +81,7 @@
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
     "cpr": "^3.0.1",
-    "dynalite": "^2.3.1",
+    "dynalite": "^3.0.0",
     "finalhandler": "^1.1.2",
     "glob": "^7.1.4",
     "inquirer": "^7.0.0",
