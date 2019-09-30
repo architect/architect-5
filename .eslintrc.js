@@ -4,7 +4,7 @@ module.exports = {
   },
   env: {
     node:true,
-    es6:true
+    es6: true
   },
   extends: 'eslint:recommended',
   rules: {
@@ -20,7 +20,9 @@ module.exports = {
     'no-console': 'off',
     'no-inner-declarations': 'off',
     'no-redeclare': 'off',
+    'no-prototype-builtins': 'off',
+    'no-useless-catch': 'off',
     // style specific
     'no-trailing-spaces': 'error'
   }
-}                      
+}
