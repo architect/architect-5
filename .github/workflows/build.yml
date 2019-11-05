@@ -55,13 +55,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Set up Node again, this time using GitHub as the publish target
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
+      # Errors when publishing to GitHub with an alternate tag, so disabling
+      # # Set up Node again, this time using GitHub as the publish target
+      # - uses: actions/setup-node@v1
+      #   with:
+      #     node-version: 12
+      #     registry-url: https://npm.pkg.github.com/
 
-      - name: Publish @LTS to GitHub
-        run: npm publish --tag LTS
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Publish @LTS to GitHub
+      #   run: npm publish --tag LTS
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
