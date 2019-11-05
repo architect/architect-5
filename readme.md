@@ -4,7 +4,8 @@
 
 > [Maintenance / LTS] Create, deploy, and maintain next-generation AWS cloud function-based serverless infrastructure with full local, offline workflows, and more.
 
-[![Travis Build Status](https://travis-ci.com/architect/architect-5.svg?branch=master)](https://travis-ci.com/architect/architect-5) [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/7q30bexnt5pdrlby/branch/master?svg=true)](https://ci.appveyor.com/project/ArchitectCI/architect-5/branch/master) <!--TODO: [![codecov](https://codecov.io/gh/architect/architect-5/branch/master/graph/badge.svg)](https://codecov.io/gh/architect/architect-5)-->
+[![GitHub CI status](https://github.com/architect/architect-5/workflows/Node%20CI/badge.svg)](https://github.com/architect/architect-5/actions?query=workflow%3A%22Node+CI%22)
+<!--TODO: [![codecov](https://codecov.io/gh/architect/architect-5/branch/master/graph/badge.svg)](https://codecov.io/gh/architect/architect-5)-->
 
 
 ## Quickstart
