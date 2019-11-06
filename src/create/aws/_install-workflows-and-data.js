@@ -8,7 +8,7 @@ module.exports = function _installFunctionsAndData(params, callback) {
   let { absolutePath, relativePath, arc } = params
   let pathToCode = relativePath.split()
   // Must be npm i and not npm ci; at this moment the Function dir does not have a package-lock.json file
-  npm([[absolutePath, ['i', '@architect/functions', '@architect/data', '--ignore-scripts']]], function _done(err) {
+  npm([[absolutePath, ['i', '@architect/functions', '--ignore-scripts']]], function _done(err) {
     if (err) callback(err)
     else copyCommon({arc, pathToCode}, callback)
   })
