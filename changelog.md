@@ -1,8 +1,17 @@
-# Architect changelog
+# Architect v5 LTS changelog
 
 ---
 Also see:
 - [Architect Functions changelog](https://github.com/architect/functions/blob/master/changelog.md)
+---
+
+## [5.9.31] 2019-11-06
+
+### Changed
+
+- Remove auto-install of `@architect/data` (which is now deprecated) when creating new functions
+- Updated dependencies
+
 ---
 
 ## [5.9.30] 2019-11-04
