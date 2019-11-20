@@ -1,4 +1,4 @@
-/test/_mock/**
-/src/package*
 /**/test/*
-/coverage/**
+coverage/
+src/package/
+test/_mock/**
