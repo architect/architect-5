@@ -5,6 +5,27 @@ Also see:
 - [Architect Functions changelog](https://github.com/architect/functions/blob/master/changelog.md)
 ---
 
+## [5.9.32] 2019-11-19
+
+### Added
+
+- Added support for `nodejs12.x`, `python3.8`, and `java11` runtimes
+- Root requests to `sandbox` now look for default `index.html` when `ARC_STATIC_SPA=false`
+
+
+### Changed
+
+- Updated dependencies
+
+
+### Fixed
+
+- Vastly improves `arc.json` support; thanks @mikemaccana
+- Fixed printing of unnecessary ANSI escape characters in CI environments (`CI` env, or not TTY output)
+- Fixed issue where `public/` may be automatically generated if `@static folder` is defined
+
+---
+
 ## [5.9.31] 2019-11-06
 
 ### Changed

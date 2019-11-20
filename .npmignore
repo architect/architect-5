@@ -1,11 +1,9 @@
 .DS_Store
 .eslintignore
 .eslintrc.js
-.git
+.git/
 .gitattributes
-.github
-.travis.yml
-appveyor.yml
+.github/
 changelog.md
 contributing.md
 coverage/
