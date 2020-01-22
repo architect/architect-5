@@ -20,7 +20,7 @@ let printBanner = require('./02-print-banner')
  *
  * - finds .arc, arc.yaml or arc.json
  * - ensures AWS_REGION and AWS_PROFILE exist
- * - also ensures Node >=8.10.x and npm >= 6.x
+ * - also ensures Node >=10.x and npm >= 6.x
  * - prints out the execution env in the banner (=
  */
 module.exports = function init(callback) {

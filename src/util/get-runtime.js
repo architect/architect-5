@@ -8,7 +8,6 @@ let chalk = require('chalk')
 let allowed = [
   `nodejs12.x`, // index 0 == default runtime
   `nodejs10.x`,
-  `nodejs8.10`,
   `python3.8`,
   `python3.7`,
   `python3.6`,
@@ -19,7 +18,7 @@ let allowed = [
   `java8`,
 ]
 
-let defaultRuntime = allowed[0] // Defaults to Node 8.10
+let defaultRuntime = allowed[0] // Defaults to Node 12
 
 /**
  * Extract runtime from @aws section
@@ -46,7 +45,7 @@ module.exports.allowed = function allowedRuntimes(runtime) {
     return runtime
   }
   else {
-    console.log(chalk.bold.yellow(`Warning:`), chalk.bold.white('Invalid runtime specified, defaulting to Node.js 8.10'))
+    console.log(chalk.bold.yellow(`Warning:`), chalk.bold.white('Invalid runtime specified, defaulting to Node.js 12'))
     return allowed[0]
   }
 }
