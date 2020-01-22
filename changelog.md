@@ -5,6 +5,16 @@ Also see:
 - [Architect Functions changelog](https://github.com/architect/functions/blob/master/changelog.md)
 ---
 
+## [5.9.35] 2020-01-21
+
+### Changed
+
+- Updated default runtime to `nodejs12.x` (formerly `nodejs10.x`) per AWS defaults
+- Removed support for `nodejs8.10`, which is EOL and no longer provisions within AWS
+- Updated dependencies
+
+---
+
 ## [5.9.34] 2019-12-13
 
 ### Added
