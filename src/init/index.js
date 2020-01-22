@@ -15,7 +15,7 @@ let assets = require('./public-code')
 module.exports = function generate(arc, callback) {
 
   let find = setting=> setting[0] === 'runtime'
-  let runtime = arc.aws && arc.aws.some(find)? arc.aws.find(find)[1] : 'nodejs10.x'
+  let runtime = arc.aws && arc.aws.some(find)? arc.aws.find(find)[1] : 'nodejs12.x'
   let functions = []
 
   // generate ./public with minimal set of static assets

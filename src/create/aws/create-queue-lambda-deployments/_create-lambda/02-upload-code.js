@@ -12,7 +12,7 @@ module.exports = function _createFunc({app, queue, name}, zip, role, callback) {
     MemorySize: 1152,
     Publish: true,
     Role: role.Arn,
-    Runtime: 'nodejs10.x',
+    Runtime: 'nodejs12.x',
     Timeout: 5,
     Environment: {
       Variables: {
