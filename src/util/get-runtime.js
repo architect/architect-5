@@ -6,9 +6,8 @@ let chalk = require('chalk')
  * 2. we will always support the runtimes below as long as aws does...
  */
 let allowed = [
-  `nodejs10.x`, // index 0 == default runtime
-  `nodejs12.x`,
-  `nodejs8.10`,
+  `nodejs12.x`, // index 0 == default runtime
+  `nodejs10.x`,
   `python3.8`,
   `python3.7`,
   `python3.6`,
@@ -19,7 +18,7 @@ let allowed = [
   `java8`,
 ]
 
-let defaultRuntime = allowed[0] // Defaults to Node 8.10
+let defaultRuntime = allowed[0] // Defaults to Node 12
 
 /**
  * Extract runtime from @aws section
@@ -46,7 +45,7 @@ module.exports.allowed = function allowedRuntimes(runtime) {
     return runtime
   }
   else {
-    console.log(chalk.bold.yellow(`Warning:`), chalk.bold.white('Invalid runtime specified, defaulting to Node.js 8.10'))
+    console.log(chalk.bold.yellow(`Warning:`), chalk.bold.white('Invalid runtime specified, defaulting to Node.js 12'))
     return allowed[0]
   }
 }

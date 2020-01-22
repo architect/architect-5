@@ -22,7 +22,7 @@ runtime python3.7
   })
 })
 
-test('invalid runtime should fall back to default (node 8.10)', t=> {
+test('invalid runtime should fall back to default (node)', t=> {
   t.plan(1)
   let raw = `
 @app

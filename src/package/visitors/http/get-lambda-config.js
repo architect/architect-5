@@ -4,8 +4,8 @@ let path = require('path')
 
 /**
  * @param {Object} a - {}
- * @param {Array} b - ['runtime', 'nodejs10.x']
- * @returns {Object} - {runtime: 'nodejs10.x}
+ * @param {Array} b - ['runtime', 'nodejs12.x']
+ * @returns {Object} - {runtime: 'nodejs12.x}
  */
 function invert(a, b) {
   a[b[0]] = b[1]
@@ -18,7 +18,7 @@ module.exports = function getPropertyHelper(arc, pathToCode) {
   let props = {
     timeout: 5,
     memory: 1152,
-    runtime: 'nodejs10.x',
+    runtime: 'nodejs12.x',
     layers: [],
     state: 'n/a',
     concurrency: 'unthrottled',

@@ -18,7 +18,7 @@ module.exports = function printBanner(arc) {
   let nodeMinorOk = nodeVersionArr[0] > 8 || nodeVersionArr[1] >= 10
 
   if (!(nodeMajorOk && nodeMinorOk))
-    err(`Node@${process.version} is not valid; must be 8.10 or higher`)
+    err(`Node@${process.version} is not valid; must be 10 or higher`)
 
   let npmOk = Number(version.split('.')[0]) >= 6
   if (process.env.NODE_ENV != 'testing' && !npmOk)
