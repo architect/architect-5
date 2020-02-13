@@ -5,6 +5,19 @@ Also see:
 - [Architect Functions changelog](https://github.com/architect/functions/blob/master/changelog.md)
 ---
 
+## [5.9.37] 2020-02-13
+
+### Changed
+
+- Sandbox now ensures `NODE_ENV` is one of `testing`, `staging`, or `production` (defaulting to `testing`)
+
+
+### Fixed
+
+- Fixed issue in Sandbox where pulling changes down with git (or Mercurial) would not trigger filesystem changes (e.g. auto-hydration, etc.); fixes #673
+
+---
+
 ## [5.9.36] 2020-02-05
 
 ### Added
