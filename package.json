@@ -72,7 +72,7 @@
   "homepage": "https://arc.codes",
   "dependencies": {
     "@architect/data": "3.0.5",
-    "@architect/parser": "1.2.2",
+    "@architect/parser": "2.0.1",
     "@architect/sandbox": "1.7.2",
     "@architect/utils": "1.4.7",
     "@smallwins/validate": "4.3.0",
