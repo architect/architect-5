@@ -5,6 +5,28 @@ Also see:
 - [Architect Functions changelog](https://github.com/architect/functions/blob/master/changelog.md)
 ---
 
+## [5.9.38] 2020-03-24
+
+### Added
+
+- Lambda's payload size limits are now respected and mocked in Sandbox; payloads exceeding 6MB will fail to execute, as they would in AWS
+- Added mocking of AWS's `multiValueHeaders` into Sandbox requests
+- Also added mocking of the headers AWS drops from requests
+
+
+### Changed
+
+- Requests in Sandbox that include query string arrays like `?ids=1&ids=2&ids=3&ids=4` are now consistent with API Gateway's request `multiValueQueryStringParameters` property; thanks @defionscode!
+- Minor improvements to auto-generated boilerplate function files
+
+
+### Fixed
+
+- Fixed Sandbox issue where HTTP requests with large body payloads error with E2BIG; fixes #639, /ht @dawnerd
+- Fixes differences in Sandbox between AWS's inconsistent header casing and our existing lowcase-normalized header casing; fixes #698
+
+---
+
 ## [5.9.37] 2020-02-13
 
 ### Changed
