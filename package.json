@@ -38,7 +38,7 @@
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "npm run lint && PORT=6666 npm run test:unit",
+    "test": "npm run lint && npm run test:unit",
     "test:slow": "npm run test:integration:hydrate",
     "test:integration:scheduled": "cross-env NODE_ENV=testing tape test/slow/create/03-scheduled.js | tap-spec",
     "test:integration:config": "cross-env NODE_ENV=testing tape test/slow/config/*-test.js | tap-spec",
@@ -46,7 +46,7 @@
     "test:integration:tables": "cross-env NODE_ENV=testing tape test/slow/create/04-tables.js | tap-spec",
     "test:integration:package": "cross-env NODE_ENV=testing tape test/slow/package/package-test.js | tap-spec",
     "test:integration:hydrate": "cross-env NODE_ENV=testing tape test/slow/hydrate/hydrate.js | tap-spec",
-    "test:unit": "cross-env NODE_ENV=testing tape 'test/fast/**/*test.js' | tap-spec",
+    "test:unit": "cross-env NODE_ENV=testing PORT=6666 tape 'test/fast/**/*test.js' | tap-spec",
     "test:coverage": "cross-env NODE_ENV=testing nyc tape 'test/**/*test.js' | tap-nyc",
     "rc": "npm version prerelease --preid LTS-RC"
   },
