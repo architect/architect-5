@@ -5,20 +5,38 @@ function get(params) {
   return { ...params, version: `Architect ${ver}` }
 }
 
-function tables (params, callback) {
-  params = get(params)
-  if (!callback) return sandbox.tables(params)
-  else sandbox.tables(params, callback)
+let tables = {
+  start: (params, callback) => {
+    params = get(params)
+    if (!callback) return sandbox.tables.start(params)
+    else sandbox.tables.start(params, callback)
+  },
+  end: (callback) => {
+    if (!callback) return sandbox.tables.end()
+    else sandbox.tables.end(callback)
+  }
 }
-function events (params, callback) {
-  params = get(params)
-  if (!callback) return sandbox.events(params)
-  else sandbox.events(params, callback)
+let events = {
+  start: (params, callback) => {
+    params = get(params)
+    if (!callback) return sandbox.events.start(params)
+    else sandbox.events.start(params, callback)
+  },
+  end: (callback) => {
+    if (!callback) return sandbox.events.end()
+    else sandbox.events.end(callback)
+  }
 }
-function http (params, callback) {
-  params = get(params)
-  if (!callback) return sandbox.http(params)
-  else sandbox.http(params, callback)
+let http = {
+  start: (params, callback) => {
+    params = get(params)
+    if (!callback) return sandbox.http.start(params)
+    else sandbox.http.start(params, callback)
+  },
+  end: (callback) => {
+    if (!callback) return sandbox.http.end()
+    else sandbox.http.end(callback)
+  }
 }
 function start (params, callback) {
   params = get(params)
