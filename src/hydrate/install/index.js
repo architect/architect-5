@@ -1,4 +1,5 @@
 let chalk = require('chalk')
+let clean = require('./_clean')
 let install = require('./_install')
 let _progress = require('../../util/progress')
 let progress
@@ -36,6 +37,9 @@ module.exports = function hydrateInstall(params, callback) {
   const installing = true
 
   series([
+    function _clean(callback) {
+      clean({pathToCode}, callback)
+    },
     function _install(callback) {
       install({arc, pathToCode, tick}, callback)
     },
