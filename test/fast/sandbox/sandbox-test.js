@@ -12,36 +12,34 @@ test('sandbox.start', t=> {
   t.ok(cli, 'Has CLI')
 })
 
-let asyncClose
 test('Async sandbox.start test/mock', async t=> {
   t.plan(1)
   process.chdir(path.join(__dirname, 'mock'))
-  asyncClose = await sandbox.start()
-  t.ok(asyncClose, 'Sandbox started (async)')
+  let result = await sandbox.start()
+  t.equal(result, 'Sandbox successfully started', 'Sandbox started (async)')
 })
 
 test('Async sandbox.close', async t=> {
   t.plan(1)
-  asyncClose()
-  t.ok(true, 'Sandbox closed')
+  let result = await sandbox.end()
+  t.equal(result, 'Sandbox successfully shut down', 'Sandbox ended')
 })
 
 let syncClose
 test('Sync sandbox.start test/mock', t=> {
   t.plan(1)
-  sandbox.start({}, function (err, end) {
+  sandbox.start({}, function (err, result) {
     if (err) t.fail('Sandbox failed (sync)')
-    else {
-      syncClose = end
-      t.ok(syncClose, 'Sandbox started (sync)')
-    }
+    else t.equal(result, 'Sandbox successfully started', 'Sandbox started (sync)')
   })
 })
 
 test('Sync sandbox.close', t=> {
   t.plan(1)
-  syncClose()
-  t.ok(true, 'Sandbox closed')
+  sandbox.end(function (err, result) {
+    if (err) t.fail('Sandbox failed (sync)')
+    else t.equal(result, 'Sandbox successfully shut down', 'Sandbox ended')
+  })
 })
 
 // Test below checks actual CLI impl, but may intermittently fail due to time required to close up all threads
@@ -72,7 +70,7 @@ test('CLI sandbox', t => {
     if (err) t.fail(err)
     else {
       if (close) close()
-      t.ok(true, 'Sandbox CLI started')
+      t.pass('Sandbox CLI started')
       t.end()
       process.exit(0) // CLI holds process open, ofc
     }

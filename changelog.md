@@ -5,6 +5,81 @@ Also see:
 - [Architect Functions changelog](https://github.com/architect/functions/blob/master/changelog.md)
 ---
 
+## [5.10.0] 2020-10-18
+
+### Breaking change for Sandbox testing API
+
+Potential breaking change for users of Sandbox's testing API: if you use Architect Sandbox in your automated testing, you may be broken by this release. Sandbox no longer returns a 'close' function, and now uses the following API for testing:
+
+- `sandbox.start()` and `.end()` start and end all Sandbox services:
+  - `sandbox.start(options[, callback]) → [Promise]`
+  - `sandbox.end([callback]) → [Promise]`
+- `http.start()` and `.end()` starts and ends just the HTTP / WebSocket service:
+  - `http.start(options[, callback]) → [Promise]`
+  - `http.end([callback]) → [Promise]`
+- `events.start()` and `.end()` starts and ends just the event bus service:
+  - `events.start(options[, callback]) → [Promise]`
+  - `events.end([callback]) → [Promise]`
+- `tables.start()` and `.end()` starts and ends just the local DynamoDB service:
+  - `tables.start(options[, callback]) → [Promise]`
+  - `tables.end([callback]) → [Promise]`
+  - `sandbox.db` is aliased to `tables`
+
+
+### Added
+
+- Added Sandbox support for symlinking shared code into functions (`src/shared` and `src/views`), which vastly improves Sandbox performance
+  - Large projects utilizing shared code will see a 10-50x performance improvement on startup, and changes to shared code are now instantly reflected across all local functions
+  - To drop back into file-copying mode, invoke sandbox with `--disable-symlinks` (or if using Sandbox via API, pass `symlink: false` in your options object)
+  - If you are using `@static fingerprint true`, you will see a symlinked `static.json` in your `src/shared` folder. Feel free to add it to your .gitignore; while it isn't hurting anything, it will be dealt with in a future release
+  - Legacy Windows operating systems that don't support symlinking will continue to copy shared code upon startup like some kind of hethen
+  - Shout out to @joliss!
+- Added basic `requestContext` to Sandbox requests
+- Sandbox itself and its various service modules (`http`, `events`, and `tables`) now have a consistent API to improve using Sandbox in your test suites (see above)
+  - All Sandbox module methods now accept an options object, and can either return a Promise (e.g. can be used in async/await), or accept an optional callback
+  - Additionally, all Sandbox module methods now properly set their own environment variables, hydrate any necessary dependencies, and handle any other necessary service startup routines
+- Added experimental Sandbox support for manually opting into [AWS's Java-based local DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html); thanks @m-butler!
+- Adds Sandbox console logging for uncaught exceptions in async functions in Node.js and Deno; /ht @coco98
+- Adds warning for out of bounds dependency loads in Sandbox
+  - This helps to ensure that potential side effects of running Node.js locally – such as the `require` algorithm traversing the filesystem outside the boundaries of the function in question – are less likely to be discovered after deploying to live AWS infra
+
+
+### Changed
+
+- Node.js CI testing is now 10.x+
+  - AWS no longer allows deployment or provisioning of `nodejs8.10` Lambdas, so Arc v5 now assumes 10.x+ in its CI
+- A number of seldom used and largely undocumented Sandbox module APIs have a number of breaking changes:
+  - `sandbox.start()` no longer returns a function to shut down, and should now be shut down directly with `sandbox.end()`
+  - `http.close()` is now `http.end()`
+  - `events.start()` & `tables.start()` no longer return server objects to be invoked with `.close()`, and should now be shut down directly with `.end()`
+- Response header casing now matches API Gateway (read: everything is lower-cased)
+- Improved missing dependency warning to provide better instructions on how to install a missing dependency if the function in question does not already have a `package.json` file; /ht @exalted
+
+
+### Fixed
+
+- Fixed parsing of duplicate query string params in Arc v5 mode
+- Fixed Sandbox shutdown errors when using an external local DB, thanks @herschel666!
+- Fixed issue where default region may prevent connections to external local DB in Sandbox, thanks @exalted!
+- Fixed regression when using a non-Sandbox DynamoDB instance via the `ARC_DB_EXTERNAL` env var, thanks @herschel666 & @m-butler!
+- Fixed Sandbox issue where Lambda timeouts were only respected if >3 seconds; now >=1 second is valid
+- Un-break Lambda invocation in Sandbox if an object is present in `.arc-config`
+- Response headers are now remapped (and in some cases dropped) per observed behavior in API Gateway
+  - Worth noting, this follows *actually observed* API Gateway behavior; what's published in their docs (link below) has been known to differ from reality
+  - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html
+  - Fixes #879; /ht @andybee
+- Fixed duplicate generation of table attribute definitions, fixes #828; thanks @filmaj, ht @exalted
+- Web socket `connectionId` was getting overwritten by concurrent client connections
+  - Sending a message to a `connectionId` before it has connected should emit a `GoneException`
+  - /ht @andybee for helping track this down 🔍
+- Updated dependency status checker in Sandbox, fixes false positive rehyhdration of packages installed by archive or git repo
+- When a non-existent `@events` Lambda is invoked, Sandbox will now gracefully fail
+- Sandbox should now restore the terminal cursor more reliably when quit
+- Preserve leading/trailing whitespace from Sandbox console logging
+- Fixed Sandbox issue where `.arc-config` files with an `@aws timeout` value of exactly `900` (15 minutes) would not be respected
+
+---
+
 ## [5.9.38] 2020-03-24
 
 ### Added
