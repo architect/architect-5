@@ -74,7 +74,7 @@
   "dependencies": {
     "@architect/data": "~3.0.5",
     "@architect/parser": "1.2.2",
-    "@architect/sandbox": "~3.2.0",
+    "@architect/sandbox": "~3.3.0",
     "@architect/utils": "~1.5.13",
     "@smallwins/validate": "~4.3.0",
     "aws-sdk": "~2.803.0",
