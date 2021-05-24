@@ -85,7 +85,7 @@
     "dynalite": "~3.2.1",
     "finalhandler": "~1.1.2",
     "glob": "~7.1.6",
-    "inquirer": "~7.3.3",
+    "inquirer": "~8.1.0",
     "is-domain-name": "~1.0.1",
     "log-update": "~4.0.0",
     "mime-types": "~2.1.27",
